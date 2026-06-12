@@ -1,0 +1,197 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Alex Chen – send a message, connect on LinkedIn or GitHub.">
+    <title>Contact | Alex Chen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, 'Segoe UI', Roboto;
+            background: #ffffff;
+            color: #0f172a;
+        }
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #0f172a;
+            color: white;
+            padding: 0.5rem 1rem;
+        }
+        .skip-link:focus { top: 0; outline: 3px solid #ffb347; }
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            background: #ffffffdd;
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 1rem 2rem;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+            border-bottom: 1px solid #eef2ff;
+        }
+        .sticky-nav a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #334155;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+        }
+        .sticky-nav a:hover, .sticky-nav a:focus {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+        }
+        .sticky-nav .active {
+            color: #1e40af;
+            border-bottom-color: #1e40af;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .form-container {
+            flex: 2;
+            min-width: 260px;
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid #e2e8f0;
+        }
+        .info-container {
+            flex: 1;
+            background: #f1f5f9;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+        }
+        label {
+            font-weight: 600;
+            display: block;
+            margin: 0.8rem 0 0.3rem;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.7rem;
+            border-radius: 0.8rem;
+            border: 1px solid #cbd5e1;
+            font-family: inherit;
+            transition: outline 0.1s;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: 3px solid #2563eb80;
+            border-color: #2563eb;
+        }
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+            margin: 0.5rem 0;
+        }
+        .radio-group label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-weight: normal;
+        }
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0 0;
+        }
+        button {
+            padding: 0.6rem 1.4rem;
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            border-radius: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button[type="reset"] {
+            background: #64748b;
+        }
+        button:hover, button:focus {
+            background: #2563eb;
+            outline: 2px solid #facc15;
+        }
+        .contact-links a {
+            display: inline-block;
+            margin: 0.5rem 1rem 0.5rem 0;
+            color: #2563eb;
+        }
+        footer {
+            background: #0f172a;
+            color: #cbd5e6;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #0f172a;
+            color: white;
+            border-radius: 3rem;
+            padding: 0.6rem 1.1rem;
+            text-decoration: none;
+        }
+        @media (max-width: 700px) {
+            .contact-grid { flex-direction: column; }
+            .sticky-nav { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to contact form</a>
+<nav class="sticky-nav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html" class="active">Contact</a>
+</nav>
+
+<main id="main-content">
+    <div class="container">
+        <h1>Let’s Connect</h1>
+        <p>Feel free to reach out — I’d love to collaborate on engineering or web projects.</p>
+
+        <div class="contact-grid">
+            <div class="form-container">
+                <form action="#" method="post">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required aria-required="true">
+
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="inquiry">Inquiry Type</label>
+                    <select id="inquiry" name="inquiry">
+                        <option value="freelance">Freelance / Contract</option>
+                        <option value="job">Job opportunity</option>
+                        <option value="collab">Collaboration</option>
+                    </select>
+
+                    <fieldset style="border: none; margin: 0.8rem 0;">
+                        <legend>Preferred contact method</legend>
+                        <div class="radio-group">
+                            <label><input type="radio" name="contact_method" value="email"> Email</label>
+                            <label><input type

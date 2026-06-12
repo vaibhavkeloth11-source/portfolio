@@ -1,0 +1,322 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Vaibhav Kelloth – Electronics and Instrumentation Engineer & Web Developer showcasing projects and skills.">
+    <title>Vaibhav Kelloth | Portfolio</title>
+    <style>
+        /* ---------- RESET & GLOBAL ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.5;
+            background-color: #f9fafb;
+            color: #111827;
+        }
+
+        /* Skip to main content (accessibility) */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #1e3a8a;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+            font-weight: 500;
+        }
+        .skip-link:focus {
+            top: 0;
+            outline: 3px solid #ffbf47;
+        }
+
+        /* Sticky Navigation */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .sticky-nav a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #374151;
+            padding: 0.5rem 0.25rem;
+            transition: color 0.2s, border-bottom 0.2s;
+            border-bottom: 2px solid transparent;
+        }
+        .sticky-nav a:hover, .sticky-nav a:focus {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
+            outline: none;
+        }
+        .sticky-nav .active {
+            color: #1e40af;
+            border-bottom-color: #1e40af;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+        }
+
+        /* Hero section: flex + vh + vw */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            min-height: 60vh;
+            background: linear-gradient(135deg, #eef2ff 0%, #ffffff 100%);
+            border-radius: 2rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-content h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            color: #0f172a;
+        }
+        .hero-tagline {
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            color: #2563eb;
+            margin: 0.5rem 0 1rem 0;
+            font-weight: 500;
+        }
+        .hero-text {
+            font-size: 1.1rem;
+            color: #334155;
+            max-width: 90%;
+        }
+        .hero-image {
+            flex: 0 0 240px;
+            text-align: center;
+        }
+        .hero-image img {
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.2);
+            border: 4px solid white;
+        }
+
+        /* Featured projects section (flex cards) */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 2rem 0 1.5rem 0;
+            color: #0f172a;
+            border-left: 6px solid #2563eb;
+            padding-left: 1rem;
+        }
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            flex: 1 1 280px;
+            max-width: 320px;
+            border-radius: 1.25rem;
+            padding: 1.25rem;
+            box-shadow: 0 10px 15px -6px rgba(0,0,0,0.1);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border: 1px solid #eef2ff;
+        }
+        .card:hover, .card:focus-within {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 28px -10px rgba(0,0,0,0.15);
+        }
+        .card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 0.75rem;
+            background: #d1d5db;
+        }
+        .card h3 {
+            margin: 1rem 0 0.5rem;
+            font-size: 1.35rem;
+        }
+        .card p {
+            color: #4b5563;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+        .tech-badge {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #1e3a8a;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Back to Top fixed button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #1e3a8a;
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background 0.2s, transform 0.1s;
+            z-index: 90;
+        }
+        .back-to-top:hover, .back-to-top:focus {
+            background: #2563eb;
+            outline: 3px solid #ffbf47;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+        footer a:hover, footer a:focus {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Responsive media query */
+        @media (max-width: 768px) {
+            .sticky-nav {
+                gap: 1rem;
+                padding: 0.75rem 1rem;
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                min-height: auto;
+            }
+            .hero-text {
+                max-width: 100%;
+            }
+            .container {
+                padding: 1rem;
+            }
+            .cards-container {
+                gap: 1rem;
+            }
+        }
+
+        /* utility */
+        .btn-dummy {
+            display: inline-block;
+            margin-top: 0.75rem;
+            background: #eef2ff;
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 500;
+            color: #1e40af;
+            transition: 0.2s;
+        }
+        .btn-dummy:hover {
+            background: #2563eb;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="sticky-nav" aria-label="Main navigation">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main id="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Vaibhav Kelloth</h1>
+                    <div class="hero-tagline">Electronics and Instrumentation Engineer & Web Developer</div>
+                    <p class="hero-text">Tech enthusiast with a strong interest in embedded systems, automation, IoT, and modern engineering technologies. Always eager to learn, build, and solve real-world problems through technology.</p>
+                </div>
+                <div class="hero-image">
+                    <img src="https://picsum.photos/id/100/300/300" alt="Vaibhav Kelloth portrait, professional headshot" width="300" height="300">
+                </div>
+            </div>
+
+            <!-- Featured Projects Section -->
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <img src="https://picsum.photos/id/26/400/250" alt="Industrial temperature monitoring system interface">
+                    <h3>Smart Industrial Temperature Monitoring System</h3>
+                    <p>Real-time monitoring of industrial equipment temperature with automated alerts and cloud-based data logging.</p>
+                    <div><span class="tech-badge">Arduino</span><span class="tech-badge">LM35 Sensor</span><span class="tech-badge">IoT</span><span class="tech-badge">C++</span></div>
+                    <a href="#" class="btn-dummy" aria-label="Learn more about Smart Industrial Temperature Monitoring System">Learn more →</a>
+                </div>
+                <div class="card">
+                    <img src="https://picsum.photos/id/20/400/250" alt="IoT energy meter dashboard">
+                    <h3>IoT-Based Smart Energy Meter</h3>
+                    <p>A smart energy monitoring solution that tracks power consumption and displays usage statistics remotely.</p>
+                    <div><span class="tech-badge">ESP8266</span><span class="tech-badge">IoT</span><span class="tech-badge">MQTT</span><span class="tech-badge">HTML/CSS/JS</span></div>
+                    <a href="#" class="btn-dummy">View case study →</a>
+                </div>
+                <div class="card">
+                    <img src="https://picsum.photos/id/48/400/250" alt="Automated conveyor system control panel">
+                    <h3>PLC-Controlled Automated Conveyor System</h3>
+                    <p>An industrial automation project that sorts objects on a conveyor belt using sensors and PLC programming.</p>
+                    <div><span class="tech-badge">PLC</span><span class="tech-badge">Ladder Logic</span><span class="tech-badge">Proximity Sensors</span><span class="tech-badge">SCADA</span></div>
+                    <a href="#" class="btn-dummy">Details →</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Vaibhav Kelloth – Built with semantic HTML & Flexbox</p>
+        <p><a href="index.html">Home</a> | <a href="about.html">About</a> | <a href="projects.html">Projects</a> | <a href="contact.html">Contact</a></p>
+    </footer>
+
+    <a href="#" class="back-to-top" aria-label="Back to top">↑ Top</a>
+</body>
+</html>
